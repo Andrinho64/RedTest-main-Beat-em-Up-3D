@@ -6,9 +6,14 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController controller;
 
     void Start()
+{
+    controller = GetComponent<CharacterController>();
+    
+    if (controller == null)
     {
-        controller = GetComponent<CharacterController>();
+        Debug.LogError("Erro: Nenhum CharacterController encontrado no " + gameObject.name);
     }
+}
 
     void Update()
     {

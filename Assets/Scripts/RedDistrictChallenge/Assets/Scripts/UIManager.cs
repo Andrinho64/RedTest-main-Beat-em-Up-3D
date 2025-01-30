@@ -7,11 +7,21 @@ public class UIManager : MonoBehaviour
     public float maxEnergy = 100f; // Maximum energy for special attacks
     private float currentEnergy; // Current energy level
 
-    void Start()
+void Start()
+{
+    if (energyBar == null)
     {
-        currentEnergy = maxEnergy; // Initialize current energy
-        UpdateEnergyBar();
+        energyBar = GameObject.Find("NomeDoObjetoEnergyBar")?.GetComponent<Image>();
+        if (energyBar == null)
+        {
+            Debug.LogError("UIManager: Energy Bar não foi encontrado!");
+        }
     }
+    
+    currentEnergy = maxEnergy;
+    UpdateEnergyBar();
+}
+
 
     public void UseSpecialEnergy(float amount)
     {
